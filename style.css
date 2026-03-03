@@ -1,0 +1,100 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+header {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('hero-bg.jpg');
+    background-size: cover;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 20px; }
+nav a { color: var(--text-main); text-decoration: none; font-weight: bold; }
+
+.hero h1 { font-size: 4rem; margin-bottom: 0; letter-spacing: -2px; }
+.hero p { color: var(--accent); font-size: 1.2rem; }
+
+.section-title { text-align: center; margin: 50px 0; font-size: 2rem; }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #334155;
+}
+
+.project-card:hover { transform: translateY(-10px); }
+
+.project-img {
+    height: 200px;
+    background-color: #334155; /* Placeholder color */
+    background-size: cover;
+    background-position: center;
+}
+
+.project-content { padding: 20px; }
+.project-content h3 { margin-top: 0; color: var(--accent); }
+.date { font-size: 0.8rem; color: var(--text-dim); }
+
+.tags span {
+    display: inline-block;
+    background: #0ea5e920;
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+    border: 1px solid var(--accent);
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 40px;
+    margin: 50px 5%;
+    border-radius: 12px;
+}
+
+.skill-category h4 { color: var(--accent); border-bottom: 1px solid #334155; padding-bottom: 10px; }
+.skill-category ul { list-style: none; padding: 0; }
+.skill-category li { margin: 10px 0; color: var(--text-dim); }
+
+footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.9rem; }
