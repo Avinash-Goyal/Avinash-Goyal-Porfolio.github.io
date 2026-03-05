@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portfolio</title>
+    <style>
+        /* FAIL-PROOF EMBEDDED CSS */
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Nav Bar */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero */
+        header {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), var(--bg)), #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+
+	/* Contact Header */
+	.contact-title {
+    	     font-size: 1.2rem;      
+    	     font-weight: bold;
+    	     text-decoration: underline;
+    	     text-align: center;
+    	     margin-top: 25px;
+    	     margin-bottom: 5px;
+    	     color: var(--text);
+	}
+
+        header h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; }
+        header p { color: var(--accent); font-size: 1.2rem; margin-top: 5px; font-weight: 300; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+	section {margin-top: 60px;}
+        .section-title { font-size: 2rem; margin-bottom: 30px; border-left: 4px solid var(--accent); padding-left: 15px; }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid #334155;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Image Preview Area */
+        .project-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: #0f172a;
+            border-bottom: 1px solid #334155;
+        }
+
+        .project-info { padding: 20px; }
+        .project-info h3 { margin: 0 0 10px 0; color: var(--text); font-size: 1.3rem; }
+        .project-info p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 15px; height: 45px; overflow: hidden; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tags span {
+            font-size: 0.7rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 50px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* Resume Section */
+        #resume { text-align: center; background: #111827; border-radius: 20px; margin-top: 40px; padding: 60px 20px; }
+        .resume-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #0f172a;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .resume-btn:hover { transform: scale(1.05); background: #fff; }
+
+	.contact-btn {
+    	display: inline-block;
+    	background: var(--accent);
+    	color: #0f172a;
+    	padding: 10px 22px;   /* smaller padding */
+    	border-radius: 40px;
+    	text-decoration: none;
+    	font-weight: bold;
+    	font-size: 0.9rem;    /* smaller text */
+   	 transition: 0.3s;
+	}
+
+	.contact-btn:hover {
+  	  transform: scale(1.05);
+   	 background: #fff;
+	}	
+
+	/* Contact Me Section */
+        #contact { text-align: center; background: #111827; border-radius: 20px; margin-top: 40px; padding: 60px 20px; }
+
+
+        /* Pop-up Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            overflow-y: auto;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: var(--card);
+            margin: 40px auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid var(--accent);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px; right: 25px;
+            font-size: 40px; cursor: pointer; color: var(--text-dim);
+        }
+        .close:hover { color: var(--accent); }
+
+        #modalImages {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        #modalImages img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        @media (max-width: 600px) {
+            #modalImages { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+	<a href="#contact">Contact Me</a>
+    </nav>
+
+    <header>
+        <h1>Avinash K. Goyal</h1>
+        <p>Northeastern University | Mechanical Engineer</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- ABOUT ME -->
+        <section id="about" style="margin-bottom: 80px;">
+            <h2 class="section-title">About Me</h2>
+            <p style="font-size: 1.1rem; max-width: 800px; color: var(--text-dim);">
+                I am a mechanical engineering student at Northeastern University (Class of 2028) with a strong interest in building systems that combine mechanical design, embedded electronics, and rapid prototyping.<br><br>I began building engineering projects in high school and have continued developing hands-on experience through projects involving robotics, embedded systems, and experimental design. My work focuses on creating functional prototypes and interactive embedded systems while applying data-driven iteration and practical engineering problem solving.<br><br>Through these projects I have developed skills in <Strong>mechanical design, microcontroller programming, CAD modeling, and rapid prototyping</Strong>, along with experience using <Strong>hand tools, SolidWorks, Arduino/ESP32 platforms, CNC Machines, 3D printers, and more</Strong>.
+            </p>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <h2 class="section-title">Technical Projects</h2>
+            <div class="project-grid">
+                
+                <!-- 1. Digital Puzzle Box -->
+                <div class="project-card" onclick="openModal('Digital Puzzle Box', 'The Digital Puzzle Box is an interactive, multi-stage escape-room style puzzle system designed to combine embedded systems, physical interaction, and logical problem solving. The project integrates sensors, user input devices, and servo-driven mechanisms to create a sequential puzzle experience that must be solved step-by-step to progress.<br><br>The system was built around an ESP32 microcontroller controlling multiple input and output components including an LCD display, distance sensors, buttons, and a joystick interface. Each stage of the puzzle required users to interact with the hardware in different ways, triggering new challenges through programmed logic.<br><br>The embedded software was written in C++ using the Arduino IDE, implementing multiple puzzle types such as pattern recognition, binary decoding, timing challenges, and mathematical sequences.<br><br>The enclosure and interface components were designed to allow easy user interaction while maintaining modular electronics inside the box. Rapid prototyping techniques and low-cost materials were used to build a complete functional prototype in under two weeks.<br><br>The final system successfully demonstrated a full puzzle sequence from start to finish, showcasing how embedded electronics and mechanical actuation can create engaging interactive devices.', 'puzzle-preview.jpg,puzzle-1.jpg,puzzle-2.jpg')">
+                    <div class="project-img" style="background-image: url('puzzle-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Digital Puzzle Box</h3>
+                        <p>Interactive multi-stage logic challenge using ESP32 and sensors.</p>
+                        <div class="tags"><span>ESP32</span> <span>C++</span> <span>Mechatronics</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Combat Robot -->
+                <div class="project-card" onclick="openModal('1lb Combat Robot', 'This project involved designing and building a 1-pound competitive combat robot optimized for durability, weapon performance, and survivability in combat robotics competitions.<br><br>The robot chassis was designed in SolidWorks with a low-profile architecture to maximize stability and ensure the robot could continue operating even if flipped over. The structure incorporated sloped armor surfaces and reinforced mounting points to improve resilience against impacts.<br><br>The front of the robot features low-clearance forks designed to gain control of opponents during engagement.<br><br>A two-tooth drum spinner weapon was engineered to maximize bite and energy transfer while staying within strict weight constraints. Iterative design was used to balance weapon mass, rotational speed, and structural strength.<br><br>Because combat robots operate under extreme conditions, special attention was given to weight distribution, structural robustness, component protection, and maintainability between matches.<br><br>The final design balanced offensive power and durability while meeting the strict weight and dimensional requirements of the competition class.', 'robot-preview.jpg,robot-1.jpg,robot-2.jpg')">
+                    <div class="project-img" style="background-image: url('robot-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>1lb Combat Robot</h3>
+                        <p>High-durability drum spinner robot designed in SolidWorks.</p>
+                        <div class="tags"><span>SolidWorks</span> <span>CAD</span> <span>RC Systems</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Animatronic Turtle -->
+                <div class="project-card" onclick="openModal('Animatronic Snapping Turtle', 'This project focused on creating a realistic full-scale animatronic snapping turtle, emphasizing lifelike appearance and compatibility with internal mechanical systems.<br><br>The outer body was modeled in Blender and fabricated using 3D printing techniques. Special attention was given to surface detail and geometry so the shell and skin textures resembled the organic form of a real snapping turtle.<br><br>The design had to integrate cleanly with the internal mechanical structure while maintaining realistic proportions and surface textures.<br><br>Multiple materials and fabrication techniques were explored to achieve realistic appearance and flexibility, including, flexible TPU printing, fabric layering, custom paint blending, and epoxy surface finishing. These methods allowed experimentation with different ways to replicate organic textures and motion.<br><br>The final animatronic shell achieved a convincing natural appearance while remaining compatible with the internal actuation system.', 'turtle-preview.jpg,turtle-1.jpg,turtle-2.jpg')">
+                    <div class="project-img" style="background-image: url('turtle-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Animatronic Turtle</h3>
+                        <p>Hyper-realistic organic body shell with mechanical integration.</p>
+                        <div class="tags"><span>Blender</span> <span>3D Printing</span> <span>Prototyping</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Hydrogen Fuel Cell Car -->
+                <div class="project-card" onclick="openModal('Hydrogen Fuel Cell Car', 'This project involved designing and optimizing a hydrogen fuel cell powered model vehicle as part of a competitive engineering challenge.<br><br>The goal was to maximize vehicle performance while operating under strict competition constraints including a fixed power source and limited modification allowances.<br><br>A structured testing process was developed to analyze how design variables affected performance. Key factors studied included vehicle weight, gear ratios, wheel diameter, and mechanical efficiency. Timed experimental runs were conducted to isolate the effect of each variable.<br><br>Data from testing was used to guide design improvements and drivetrain configuration adjustments. These iterative changes improved the balance between torque and speed.<br><br>The final design achieved top performance in the competition and received the Best Engineered Car Award for its systematic design and optimization process.', 'car-preview.jpg,car-1.jpg,car-2.jpg')">
+                    <div class="project-img" style="background-image: url('car-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Hydrogen Fuel Cell Car</h3>
+                        <p>Competition-winning performance optimization and testing.</p>
+                        <div class="tags"><span>Optimization</span> <span>Data Analysis</span></div>
+                    </div>
+                </div>
+
+                <!-- 5. Mushroom Grow Box -->
+                <div class="project-card" onclick="openModal('Mushroom Grow Box', 'The Mushroom Grow Box project involved building a small-scale environmental control system capable of monitoring and regulating conditions required for mushroom cultivation.<br><br>The system used an Arduino Uno connected to temperature and humidity sensors, along with control components for regulating environmental conditions.<br><br>A microcontroller program written in C++ continuously monitored sensor readings and adjusted system behavior accordingly.<br><br>A custom electronics housing was designed and 3D printed to mount the control system externally on the grow box. The enclosure included features to improve usability and maintenance, including, snap-fit mounting structure, cable routing channels, and a dedicated programming access port<br><br>The system successfully demonstrated automated environmental monitoring and control within a compact and maintainable design.', 'grow-preview.jpg,grow-1.jpg')">
+                    <div class="project-img" style="background-image: url('grow-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Mushroom Grow Box</h3>
+                        <p>Automated Arduino-based climate control for cultivation.</p>
+                        <div class="tags"><span>Arduino</span> <span>Control Systems</span> <span>3D Printing</span></div>
+                    </div>
+                </div>
+
+                <!-- 6. Obstacle Avoidance Robot -->
+                <div class="project-card" onclick="openModal('Obstacle Avoidance Robot', 'This project involved building an autonomous robot capable of navigating around obstacles using sensor feedback and programmed control logic.<br><br>The robot chassis was designed in OnShape and fabricated using 3D printing. The design prioritized simplicity and easy integration of sensors and motors.<br><br>The robot used distance sensors to detect obstacles and adjust its movement in real time. All control logic was programmed in C++ using the Arduino IDE.<br><br>The system processed sensor input and dynamically controlled motor outputs to allow the robot to avoid collisions.<br><br>The completed robot successfully navigated obstacle-filled environments using fully autonomous control.', 'avoid-preview.jpg,avoid-1.jpg')">
+                    <div class="project-img" style="background-image: url('avoid-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Obstacle Avoidance Robot</h3>
+                        <p>Autonomous navigation robot using sensor-based control logic.</p>
+                        <div class="tags"><span>Arduino</span> <span>C++</span> <span>Sensors</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RESUME -->
+        <section id="resume">
+            <h2 style="margin-top: 0;">Resume</h2>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">
+                Download my latest CV for a full list of skills, professional experience, and academic history.
+            </p>
+            <a href="resume.pdf" class="resume-btn" target="_blank">Download Resume (PDF)</a>
+        </section>
+
+        <!-- Contact Me -->
+        <section id="contact">
+            <h2 style="margin-top: 0;">Contact Me</h2>
+
+            <div class="contact-title">Email</div>
+            <p>avinash.k.goyal@outlook.com</p>
+
+            <div class="contact-title">Phone</div>
+            <p>+1 (862) 258-0303</p>
+
+            <div class="contact-title">LinkedIn</div>
+
+		<a href="https://www.linkedin.com/in/avinash-k-goyal" target="_blank" 
+  		class="contact-btn">
+  		View LinkedIn
+		</a>
+		
+            </p>
+        </section>
+    </div> 
+
+    <footer>
+        <p style="text-align: center; color: var(--text-dim); padding: 40px 0; border-top: 1px solid #334155;">
+            Avinash K. Goyal | Northeastern University
+        </p>
+    </footer>
+
+    <!-- POP-UP MODAL STRUCTURE -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color:var(--accent); margin-top: 0; font-size: 2rem;"></h2>
+            <p id="modalDesc" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dim);"></p>
+            <h4 style="margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">Project Documentation</h4>
+            <div id="modalImages"></div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, desc, imgs) {
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalDesc").innerHTML = desc;
+            const imgContainer = document.getElementById("modalImages");
+            imgContainer.innerHTML = "";
+            
+            const imgList = imgs.split(",");
+            imgList.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src.trim();
+                img.onerror = function() { this.style.display='none'; }; // Hides images that don't exist
+                imgContainer.appendChild(img);
+            });
+
+            document.getElementById("projectModal").style.display = "block";
+            document.body.style.overflow = "hidden"; // Stops the background from scrolling
+        }
+
+        function closeModal() {
+            document.getElementById("projectModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Close when clicking outside the box
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("projectModal")) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
