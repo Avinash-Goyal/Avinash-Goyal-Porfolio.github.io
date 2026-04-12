@@ -44,3 +44,4 @@ window.onclick = (event) => {
         document.body.style.overflow = "auto";
     }
 };
+

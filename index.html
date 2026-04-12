@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Portfolio</title>
+    <title>Engineering Portfolio | Avinash K. Goyal</title>
     <style>
         /* FAIL-PROOF EMBEDDED CSS */
         :root {
@@ -63,22 +63,11 @@
             border-bottom: 1px solid #334155;
         }
 
-	/* Contact Header */
-	.contact-title {
-    	     font-size: 1.2rem;      
-    	     font-weight: bold;
-    	     text-decoration: underline;
-    	     text-align: center;
-    	     margin-top: 25px;
-    	     margin-bottom: 5px;
-    	     color: var(--text);
-	}
-
         header h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; }
         header p { color: var(--accent); font-size: 1.2rem; margin-top: 5px; font-weight: 300; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-	section {margin-top: 60px;}
+        section { margin-top: 60px; }
         .section-title { font-size: 2rem; margin-bottom: 30px; border-left: 4px solid var(--accent); padding-left: 15px; }
 
         /* Project Grid */
@@ -105,7 +94,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Image Preview Area */
         .project-img {
             height: 200px;
             background-size: cover;
@@ -128,41 +116,24 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        /* Resume Section */
-        #resume { text-align: center; background: #111827; border-radius: 20px; margin-top: 40px; padding: 60px 20px; }
-        .resume-btn {
+        /* Resume & Contact Sections */
+        #resume, #contact { text-align: center; background: #111827; border-radius: 20px; margin-top: 40px; padding: 60px 20px; }
+        
+        .resume-btn, .contact-btn {
             display: inline-block;
             background: var(--accent);
             color: #0f172a;
-            padding: 16px 40px;
-            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
             transition: 0.3s;
+            border-radius: 50px;
         }
-        .resume-btn:hover { transform: scale(1.05); background: #fff; }
 
-	.contact-btn {
-    	display: inline-block;
-    	background: var(--accent);
-    	color: #0f172a;
-    	padding: 10px 22px;   /* smaller padding */
-    	border-radius: 40px;
-    	text-decoration: none;
-    	font-weight: bold;
-    	font-size: 0.9rem;    /* smaller text */
-   	 transition: 0.3s;
-	}
+        .resume-btn { padding: 16px 40px; font-size: 1.1rem; }
+        .contact-btn { padding: 10px 22px; font-size: 0.9rem; }
+        .resume-btn:hover, .contact-btn:hover { transform: scale(1.05); background: #fff; }
 
-	.contact-btn:hover {
-  	  transform: scale(1.05);
-   	 background: #fff;
-	}	
-
-	/* Contact Me Section */
-        #contact { text-align: center; background: #111827; border-radius: 20px; margin-top: 40px; padding: 60px 20px; }
-
+        .contact-title { font-size: 1.2rem; font-weight: bold; text-decoration: underline; margin-top: 25px; margin-bottom: 5px; color: var(--text); }
 
         /* Pop-up Modal */
         .modal {
@@ -193,23 +164,43 @@
         }
         .close:hover { color: var(--accent); }
 
-	.modal-label { color: var(--accent); font-weight: bold; }
+        .modal-label { color: var(--accent); font-weight: bold; }
 
+        /* VERTICAL IMAGE LAYOUT */
         #modalImages {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 30px;
         }
+
+        .modal-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 30px;
+        }
+
+        .modal-item:last-child { border-bottom: none; }
 
         #modalImages img {
             width: 100%;
-            border-radius: 10px;
+            max-width: 800px;
+            border-radius: 12px;
             border: 1px solid #334155;
         }
 
+        .img-caption {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: var(--text-dim);
+            font-style: italic;
+            text-align: center;
+            max-width: 700px;
+        }
+
         @media (max-width: 600px) {
-            #modalImages { grid-template-columns: 1fr; }
             header h1 { font-size: 2.5rem; }
         }
     </style>
@@ -220,7 +211,7 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#resume">Resume</a>
-	<a href="#contact">Contact Me</a>
+        <a href="#contact">Contact</a>
     </nav>
 
     <header>
@@ -230,21 +221,18 @@
 
     <div class="container">
         
-        <!-- ABOUT ME -->
-        <section id="about" style="margin-bottom: 80px;">
+        <section id="about">
             <h2 class="section-title">About Me</h2>
             <p style="font-size: 1.1rem; max-width: 800px; color: var(--text-dim);">
-    I'm a mechanical engineering student at Northeastern University (Class of 2028), driven by curiosity about how things are made and a desire to be constantly improving and learning. Before pursuing engineering, I explored everything from building computers to game design in Unreal Engine to 3D modeling in Blender. A high school engineering class introduced me to CAD, microcontrollers, and physical systems, and I found that engineering brought together the creative and technical instincts I'd been developing for years.<br><br>My favorite projects are the ones that push me to work across disciplines: designing mechanical systems, writing embedded control logic, prototyping enclosures, and iterating until the whole system works together. Whether that means tuning gear ratios on a fuel cell car through systematic testing, designing a multi-stage puzzle box from scratch in under two weeks, or building an animatronic snapping turtle where Blender skills from game design became essential to the mechanical build, I want to understand and learn as much as I can.<br><br><strong>Skills:</strong> SolidWorks, OnShape, Blender, Arduino/ESP32 (C++), 3D printing, CNC machining, rapid prototyping, hands-on fabrication and assembly, and more (see resume for full list).
-	</p>
+                I'm a mechanical engineering student at Northeastern University (Class of 2028), driven by curiosity about how things are made and a desire to be constantly improving and learning. Before pursuing engineering, I explored everything from building computers to game design in Unreal Engine to 3D modeling in Blender. A high school engineering class introduced me to CAD, microcontrollers, and physical systems, and I found that engineering brought together the creative and technical instincts I'd been developing for years.<br><br>My favorite projects are the ones that push me to work across disciplines: designing mechanical systems, writing embedded control logic, prototyping enclosures, and iterating until the whole system works together. Whether that means tuning gear ratios on a fuel cell car through systematic testing, designing a multi-stage puzzle box from scratch in under two weeks, or building an animatronic snapping turtle where Blender skills from game design became essential to the mechanical build, I want to understand and learn as much as I can.<br><br><strong>Skills:</strong> SolidWorks, OnShape, Blender, Arduino/ESP32 (C++), 3D printing, CNC machining, rapid prototyping, hands-on fabrication and assembly, and more (see resume for full list).
+            </p>
         </section>
 
-        <!-- PROJECTS -->
         <section id="projects">
             <h2 class="section-title">Technical Projects</h2>
             <div class="project-grid">
                 
-                <!-- 1. Digital Puzzle Box -->
-                <div class="project-card" onclick="openModal('Digital Puzzle Box', '<span class=modal-label>Goal:</span> To improve upon my skills with microcontrollers (and because I had a lot of extra cardboard), I decided to challenge myself with a quick project: an interactive, multi-stage puzzle box combining embedded electronics with physical interaction.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I built the system around an ESP32 and an LCD since it was what I had on hand, along with ultrasonic distance sensors, tactile buttons, servo-driven mechanisms, and a joystick, which I had never worked with before. I wrote the embedded software in C++ using the Arduino IDE, structured around a counter that tracked progress through each completed stage.<br><br>I wanted each puzzle to make full use of its assigned sensor and for difficulty to build as the user progressed. For example, the distance sensor stage required moving the box a specific distance from the wall to proceed, while the final stage required entering the Konami code on the joystick, with the last inputs (B, A, Start) mapped to buttons on earlier faces of the box.<br><br>The biggest challenge was working with cardboard: parts had trouble staying in place, and cuts weren\&apos;t precise enough for reliable sensor mounting. The complexity of the electronics also caused frequent glitches early on, where inputs wouldn\&apos;t register. A few revamps to the tracking system resolved most of these issues.<br><br><span class=modal-label>Outcome:</span> Went from concept to a functional prototype in under two weeks. Friends and family who tested it found some stages overly complicated, which taught me that if I were to revisit this, I\&apos;d rely less on outside knowledge and lean more into the sensors themselves. The project strengthened my embedded systems skills and reinforced the importance of considering user experience throughout the design process.', 'puzzle-preview.jpg,puzzle-1.jpg,puzzle-2.jpg,puzzle-3.jpg,puzzle-4.jpg')">
+                <div class="project-card" onclick="handleProjectClick(0)">
                     <div class="project-img" style="background-image: url('puzzle-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Digital Puzzle Box</h3>
@@ -253,8 +241,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Combat Robot -->
-                <div class="project-card" onclick="openModal('1lb Combat Robot', '<span class=modal-label>Goal:</span> Design a 1-pound competitive combat robot optimized to balance offensive power with survivability under strict weight and dimensional constraints.<br><br><span class=modal-label>Approach &amp; Challenges:</span> After researching different weapon archetypes, I chose a drum spinner design because it balanced the maneuverability of horizontal spinners with the cutting and flipping capability of vertical spinners. I modeled the chassis in SolidWorks with a low-profile architecture to prevent weapons from striking underneath. Even if the robot were flipped, the wheels extend above the top plate for inverted driving, which also reduced the amount of armor needed and saved weight. The sides feature sloped surfaces to deflect hits, and the front uses low-clearance forks to get underneath opponents and feed them into the two-toothed drum.<br><br>My biggest challenges were time and weight. I was the only person working on the robot, as opposed to the usual three-person team, so designing efficiently was critical to leave time for soldering, electronics, and testing. Weight was a constant battle: many of my designs came in just slightly over the limit, and estimation errors in the software often meant reprinting parts or manually removing material to make weight.<br><br><span class=modal-label>Outcome:</span> The final design passed initial inspection, but faulty electronics and lingering weight issues on competition day prevented me from competing against other bots. While disappointing, this was still one of my most rewarding projects. Working solo forced me to manage every aspect of the build, and the weight struggles taught me to design with tighter margins and validate estimates earlier.', 'robot-preview.jpg,robot-1.jpg,robot-2.jpg,robot-3.jpg')">
+                <div class="project-card" onclick="handleProjectClick(1)">
                     <div class="project-img" style="background-image: url('robot-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>1lb Combat Robot</h3>
@@ -263,8 +250,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Animatronic Turtle -->
-                <div class="project-card" onclick="openModal('Animatronic Snapping Turtle', '<span class=modal-label>Goal:</span> The final project for my high school engineering class was to use everything we learned over two years to create a realistic full-scale animatronic animal display with three forms of motion that also taught viewers about the animal. My group chose an alligator snapping turtle, and my task was to create the realistic outer shell over a six-month timeframe.<br><br><span class=modal-label>Approach &amp; Challenges:</span> Using sculpting techniques I learned making video game characters (blocking out shapes, sculpting brushes, and working from top/side/back profile references), I modeled the body in Blender and fabricated it using 3D printing. I focused on replicating the basic body shape, arms, and a realistic shell texture. These printed parts served as the main structure where pneumatics and motors could attach. The three planned motions were the jaw shutting, the neck extending, and the front legs swimming. The arms had holes for wooden dowels to connect to the linkage system, and the head had an opening for a syringe cap to enable a pneumatic extend/retract mechanism.<br><br>For the jaw, I originally tried making space for a servo inside the head, but couldn\&apos;t. Then, while researching turtle facts, I learned that alligator snapping turtles hunt by wiggling their tongue underwater to mimic a worm and attract fish. That reminded me of a string, so we glued a visible string inside the mouth and used a servo in the back to pull it, closing the jaw. I painted the visible portion to look like the worm-tongue, connecting a functional mechanism directly to the animal\&apos;s real biology.<br><br>The most difficult part was the skin. I needed a material that was flexible enough to move with the components but also mimicked the wrinkly texture of real turtle skin. My first attempt was 3D printing flexible TPU sheets modeled in Blender using a normal map (a game design texture that encodes surface depth information), but the filament was incompatible with our printers. I then tried printing a solid textured block and vacuum-forming another material over it, but the geometry was too complex and would have taken three days to print. The solution ended up being simple: regular fabric with epoxy putty smeared across the surface, giving it both the flexibility and the rough, wrinkled texture I needed. A final paint job and hand-sculpted clay spikes completed the look.<br><br><span class=modal-label>Outcome:</span> The final shell achieved a convincing natural appearance while remaining fully compatible with the internal actuation system. I learned a lot about collaborating with a large team to make parts compatible, and about researching and prototyping creative solutions when the obvious approach doesn\&apos;t work. This remains my most complex project and the most fun, as I got to combine skills from game design with hands-on engineering in ways I hadn\&apos;t expected.', 'turtle-preview.jpg,turtle-1.jpg,turtle-2.jpg,turtle-3.jpg,turtle-4.jpg,turtle-5.jpg,turtle-6.jpg,turtle-7.jpg,turtle-8.jpg')">
+                <div class="project-card" onclick="handleProjectClick(2)">
                     <div class="project-img" style="background-image: url('turtle-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Animatronic Turtle</h3>
@@ -273,8 +259,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Hydrogen Fuel Cell Car -->
-                <div class="project-card" onclick="openModal('Hydrogen Fuel Cell Car', '<span class=modal-label>Goal:</span> Maximize the speed of a hydrogen fuel cell-powered model vehicle under strict competition constraints, including a fixed power source and limited modification allowances.<br><br><span class=modal-label>Approach &amp; Challenges:</span> With the powertrain essentially locked, performance gains had to come from everything else: vehicle weight, gear ratios, wheel diameter, and mechanical efficiency. Instead of guessing, I developed a structured testing process where I isolated each variable through timed experimental runs, changing one factor at a time to measure its effect. The data from those runs guided each design iteration. For example, testing revealed that gear ratio had a more significant impact on overall performance than weight reduction, which shifted my optimization priority toward drivetrain configuration and the balance between torque and speed. Additionally, ratios that prioritized torque performed much better, as the fuel cell alone didn\&apos;t supply enough power to move the car. I also tested other factors, such as adding bearings for smoother rotation, which improved performance enough to outweigh the added mass (literally).<br><br>The main challenge with this approach was that changing certain variables, particularly gear ratios, was time-consuming. Over time, I adapted the system by adding motor spacers and mounting components with Velcro and zip ties, allowing for quick ratio swaps and the corresponding changes in mounting height.<br><br><span class=modal-label>Outcome:</span> The final design achieved top performance in the competition and received the Best Engineered Car Award for its systematic design and optimization process. The key takeaway was the value of data-driven iteration: having a structured testing process meant I could make confident design decisions instead of relying on intuition.', 'car-preview.jpg,car-1.jpg,car-2.jpg,car-3.jpg')">
+                <div class="project-card" onclick="handleProjectClick(3)">
                     <div class="project-img" style="background-image: url('car-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Hydrogen Fuel Cell Car</h3>
@@ -283,8 +268,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Mushroom Grow Box -->
-                <div class="project-card" onclick="openModal('Mushroom Grow Box', '<span class=modal-label>Goal:</span> Program and house the electronics for an environmental control system capable of monitoring and regulating temperature and humidity within the narrow ranges required for mushroom cultivation.<br><br><span class=modal-label>Approach &amp; Challenges:</span> The electronics use an Arduino Uno, reading from temperature and humidity sensors, driving control components (fans, heating elements) through a C++ program that continuously adjusts outputs based on sensor feedback. After testing everything on a breadboard and soldering the final connections, I moved on to housing the components, designing a custom 3D-printed enclosure. The main challenge was finding the best way to use the limited space available while keeping everything easily accessible.<br><br>To maximize space, the box was designed around the outer housing for the fan and water chamber that controls humidity. The final version uses snap-fit joints for tool-free mounting, internal cable routing channels to keep wiring organized, and a dedicated access port so I can reprogram the Arduino without disassembling anything. These small quality-of-life features made the difference between a prototype I\&apos;d use once and a system that\&apos;s practical to maintain and adjust over time.<br><br><span class=modal-label>Outcome:</span> The system successfully demonstrated automated environmental monitoring and control within a compact, maintainable design. I learned about the importance of integrating simple features early that make things easier to edit and maintain later.', 'grow-preview.jpg,grow-1.jpg,grow-2.jpg,grow-3.jpg,grow-4.jpg')">
+                <div class="project-card" onclick="handleProjectClick(4)">
                     <div class="project-img" style="background-image: url('grow-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Mushroom Grow Box</h3>
@@ -293,8 +277,7 @@
                     </div>
                 </div>
 
-                <!-- 6. Obstacle Avoidance Robot -->
-                <div class="project-card" onclick="openModal('Obstacle Avoidance Robot', '<span class=modal-label>Goal:</span> Build an autonomous robot that can navigate obstacle-filled environments using only real-time sensor feedback, with no remote control or pre-mapped paths.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I designed the chassis in OnShape and 3D printed it, keeping the geometry simple to make sensor and motor mounting straightforward. The robot used an ultrasonic sensor mounted on a servo motor to scan five points across its field of view. It was programmed to move forward in set increments of approximately one foot, taking the five readings to determine which direction had the most open space. If there wasn\&apos;t enough room in front, the robot would rotate 180 degrees to scan behind it and find a new path. I opted for a two-wheel design to make spinning in place easier, and added rubber to the wheel surfaces to increase grip. The remaining space on top was used for electronics.<br><br>The main challenge was soldering, as this was my first time doing it for a project. My first attempt was messy, but after practicing on some spare components, I was able to clean up my technique and create strong, reliable connections.<br><br><span class=modal-label>Outcome:</span> The completed robot reliably navigated cluttered environments with fully autonomous control. Looking back with what I know now, the step-based movement approach was a bit flawed since it made navigation feel janky. If I were to revisit this, I\&apos;d simplify it by having the robot turn continuously while scanning until it found a sufficiently open path.', 'avoid-preview.jpg,avoid-1.jpg,avoid-2.jpg,avoid-3.jpg')">
+                <div class="project-card" onclick="handleProjectClick(5)">
                     <div class="project-img" style="background-image: url('avoid-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Obstacle Avoidance Robot</h3>
@@ -303,9 +286,7 @@
                     </div>
                 </div>
 
-
-<!-- 7. Advanced Mechanisms: Robotic Arm -->
-                <div class="project-card" onclick="openModal('Robotic Arm', '<span class=modal-label>Goal:</span> Program and operate a robotic arm to perform a repeatable physical task (activating a heating device to maintain a controlled temperature in this case), demonstrating how precise motion control can enable robotics to interact reliably with real-world systems.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I integrated an Arduino-controlled robotic arm with a simple environmental control system, programming the arm to move through a calibrated sequence of positions to press a control interface connected to the heater. I built supporting structures to stabilize the sensors and hardware during operation, and wrote the control logic in C++ to coordinate multiple servo motors for consistent, repeatable movement.<br><br>The bulk of the work was in calibration. Small errors in motor positioning or timing would compound across the motion sequence, causing the arm to miss its target. I used iterative testing, adjusting positions by small increments, running the sequence, measuring the deviation, and adjusting again, until the arm could reliably hit the control interface across repeated cycles.<br><br><span class=modal-label>Outcome:</span> The final system performed structured physical interactions through motion control and hardware integration. The process reinforced that precision in electromechanical systems isn\&apos;t something you design once and get right; it\&apos;s something you converge on through systematic testing and calibration.', 'arm-preview.jpg,arm-1.jpg,arm-2.jpg,arm-3.jpg')">
+                <div class="project-card" onclick="handleProjectClick(6)">
                     <div class="project-img" style="background-image: url('arm-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Advanced Mechanisms Robotic Arm</h3>
@@ -314,37 +295,23 @@
                     </div>
                 </div>
 
-
             </div>
         </section>
 
-        <!-- RESUME -->
         <section id="resume">
             <h2 style="margin-top: 0;">Resume</h2>
-            <p style="color: var(--text-dim); margin-bottom: 30px;">
-                Download my latest CV for a full list of skills, professional experience, and academic history.
-            </p>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">Download my latest CV for a full list of skills and experience.</p>
             <a href="resume.pdf" class="resume-btn" target="_blank">Download Resume (PDF)</a>
         </section>
 
-        <!-- Contact Me -->
         <section id="contact">
             <h2 style="margin-top: 0;">Contact Me</h2>
-
             <div class="contact-title">Email</div>
             <p>goyal.avi@northeastern.edu</p>
-
             <div class="contact-title">Phone</div>
             <p>+1 (862) 258-0303</p>
-
             <div class="contact-title">LinkedIn</div>
-
-		<a href="https://www.linkedin.com/in/avinash-k-goyal" target="_blank" 
-  		class="contact-btn">
-  		View LinkedIn
-		</a>
-		
-            </p>
+            <a href="https://www.linkedin.com/in/avinash-k-goyal" target="_blank" class="contact-btn">View LinkedIn</a>
         </section>
     </div> 
 
@@ -354,47 +321,141 @@
         </p>
     </footer>
 
-    <!-- POP-UP MODAL STRUCTURE -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2 id="modalTitle" style="color:var(--accent); margin-top: 0; font-size: 2rem;"></h2>
             <p id="modalDesc" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dim);"></p>
-            <h4 style="margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">Project Photos</h4>
+            <h4 style="margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">Project Documentation</h4>
             <div id="modalImages"></div>
         </div>
     </div>
 
     <script>
-        function openModal(title, desc, imgs) {
-            document.getElementById("modalTitle").innerText = title;
-            document.getElementById("modalDesc").innerHTML = desc;
-            const imgContainer = document.getElementById("modalImages");
-            imgContainer.innerHTML = "";
-            
-            const imgList = imgs.split(",");
-            imgList.forEach(src => {
-                const img = document.createElement("img");
-                img.src = src.trim();
-                img.onerror = function() { this.style.display='none'; }; // Hides images that don't exist
-                imgContainer.appendChild(img);
-            });
+        // PROJECT DATA SOURCE
+        const projectData = [
+            {
+		title: "Digital Puzzle Box",
+        desc: "<span class=modal-label>Timeline:</span> Sept - Oct, 2025<br><br><span class=modal-label>Goal:</span> To improve upon my skills with microcontrollers, I challenged myself with an interactive, multi-stage puzzle box combining embedded electronics with physical interaction.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I built the system around an ESP32 and an LCD since it was what I had on hand, along with ultrasonic distance sensors, tactile buttons, servo-driven mechanisms, and a joystick, which I had never worked with before. I wrote the embedded software in C++ using the Arduino IDE, structured around a counter that tracked progress through each completed stage.<br><br>I wanted each puzzle to make full use of its assigned sensor and for difficulty to build as the user progressed. For example, the distance sensor stage required moving the box a specific distance from the wall to proceed, while the final stage required entering the Konami code on the joystick, with the last inputs (B, A, Start) mapped to buttons on earlier faces of the box.<br><br>The biggest challenge was working with cardboard: parts had trouble staying in place, and cuts weren\&apos;t precise enough for reliable sensor mounting. The complexity of the electronics also caused frequent glitches early on, most of which I was able to find and fix when optimizing the code.<br><br><span class=modal-label>Outcome:</span> Went from concept to a functional prototype in under two weeks. Friends and family who tested it found some stages overly complicated, which taught me that if I were to revisit this, I\&apos;d rely less on outside knowledge, lean more into the sensors themselves, and reduce the number of steps to solve each puzzle. The project strengthened my embedded systems skills and reinforced the importance of considering user experience throughout the design process and keeping code simple and  well organized.",
+        images: [
+            { src: 'puzzle-preview.jpg', cap: 'Full assembly of the puzzle box.' },
+            { src: 'puzzle-1.jpg', cap: 'Front face of puzzle box with the LCD display.' },
+            { src: 'puzzle-2.jpg', cap: 'First puzzle side. Users would have to press the yellow button at the distance ranges marked on the front face.' },
+            { src: 'puzzle-3.jpg', cap: 'Second puzzle side. A binary-encoded message on the front face spells "Fibonacci," cueing the user to this stage. Each button is labeled with alternating positions in the sequence (red: 1, 3, 5; blue: 2, 4, 6), and the user must press each button a number of times matching the Fibonacci value at that position: red 0 times, blue 1, red 1, blue 2, red 3, blue 5.' },
+            { src: 'puzzle-4.jpg', cap: 'Third puzzle side. A coded message on the bottom of the box deciphers to "Konami," cueing the user to enter the classic Konami cheat code (up, up, down, down, left, right, left, right, B, A, Start) using the joystick at the center. The final three inputs: B, A, and Start, are mapped to buttons on earlier faces of the box, requiring the user to recall and revisit previous stages to complete the sequence.' }
+        ]
+    },
+    {
+        title: "1lb Combat Robot",
+        desc: "<span class=modal-label>Timeline:</span> May - June, 2025<br><br><span class=modal-label>Goal:</span> Design a 1-pound competitive combat robot optimized to balance offensive power with survivability under strict weight and dimensional constraints.<br><br><span class=modal-label>Approach &amp; Challenges:</span> After researching different weapon archetypes, I chose a drum spinner design because it balanced the maneuverability of horizontal spinners with the cutting and flipping capability of vertical spinners. I modeled the chassis in SolidWorks with a low-profile architecture to prevent weapons from striking underneath. Even if the robot were flipped, the wheels extend above the top plate for inverted driving, which also reduced the amount of armor needed and saved weight. The sides feature sloped surfaces to deflect hits, and the front uses low-clearance forks to get underneath opponents and feed them into the two-toothed drum.<br><br>My biggest challenges were time and weight. I was the only person working on the robot, as opposed to the usual three-person team, so efficient design was critical to leaving time for soldering, electronics, and testing. Weight was a constant battle: many of my designs came in just slightly over the limit, and estimation errors in the software often meant reprinting parts or manually removing material to make weight.<br><br><span class=modal-label>Outcome:</span> The final design passed initial inspection, but faulty electronics and lingering weight issues on competition day prevented me from competing against other bots. While disappointing, this was still one of my most rewarding projects. Working solo forced me to manage every aspect of the build, and the weight struggles taught me to design with tighter margins and validate estimates earlier.",
+        images: [
+            { src: 'robot-preview.jpg', cap: 'Full robot in Solidworks assembly.' },
+            { src: 'robot-4.jpg', cap: 'Spinner weapon side view. Design inspired by hurricane weather icon.' },
+            { src: 'robot-1.jpg', cap: 'Initial test print to see if electronics will fit.' },
+            { src: 'robot-3.jpg', cap: 'Final print of the robot with electronics assembled.' }
+        ]
+    },
+    {
+        title: "Animatronic Snapping Turtle",
+        desc: "<span class=modal-label>Timeline:</span> Jan - June, 2024<br><br><span class=modal-label>Goal:</span> The final project for my high school engineering class was to use everything we learned over two years to create a realistic full-scale animatronic animal display with three forms of motion that also taught viewers about the animal. My group chose an alligator snapping turtle, and my task was to create the realistic outer shell over a six-month timeframe.<br><br><span class=modal-label>Approach &amp; Challenges:</span> Using sculpting techniques I learned making video game characters (blocking out shapes, sculpting brushes, and working from top/side/back profile references), I modeled the body in Blender and fabricated it using 3D printing. I focused on replicating the basic body shape, arms, and a realistic shell texture. These printed parts served as the main structure where pneumatics and motors could attach. The three planned motions were the jaw shutting, the neck extending, and the front legs swimming. The arms had holes for wooden dowels to connect to the linkage system, and the head had an opening for a syringe cap to enable a pneumatic extend/retract mechanism.<br><br>For the jaw, I originally tried making space for a servo inside the head, but couldn\&apos;t. Then, while researching turtle facts, I learned that alligator snapping turtles hunt by wiggling their tongue underwater to mimic a worm and attract fish. That reminded me of a string, so we glued a visible string inside the mouth and used a servo in the back to pull it, closing the jaw. I painted the visible portion to look like the worm-tongue, connecting a functional mechanism directly to the animal\&apos;s real biology.<br><br>The most difficult part was the skin. I needed a material that was flexible enough to move with the components and mimicked the wrinkly texture of real turtle skin. My first attempt was 3D printing flexible TPU sheets modeled in Blender using a normal map (a game design texture that encodes surface depth information), but the filament was incompatible with our printers. I then tried printing a solid textured block and vacuum-forming another material over it, but the geometry was too complex and would have taken three days to print. The solution ended up being simple: regular fabric with epoxy putty smeared across the surface, giving it both the flexibility and the rough, wrinkled texture I needed. A final paint job and hand-sculpted clay spikes completed the look.<br><br><span class=modal-label>Outcome:</span> The final shell achieved a convincing natural appearance while remaining fully compatible with the internal actuation system. I learned a lot about collaborating with a large team to make parts compatible, and about researching and prototyping creative solutions when the obvious approach doesn\&apos;t work. This remains my most complex project and the most fun, as I got to combine skills from game design with hands-on engineering in ways I hadn\&apos;t expected.",
+        images: [
+            { src: 'turtle-preview.jpg', cap: 'Finished Anamatronic with base and integrated mechanisms.' },
+            { src: 'turtle-1.jpg', cap: '3D sculpt of the body in Blender using a reference found online to build and block out.' },
+            { src: 'turtle-2.jpg', cap: 'Finished 3D model of body, shell, arms, and head in Blender.' },
+            { src: 'turtle-3.jpg', cap: 'Holes in the back of the head print to fix syringe head and let string pass through.' },
+            { src: 'turtle-4.jpg', cap: 'All parts of anamatronic shell 3D printed.' },
+            { src: 'turtle-5.jpg', cap: 'Initial attempt at embedding normal map texture in 3D-printable block.' },
+            { src: 'turtle-6.jpg', cap: 'Adding epoxy putty to fabric to give accurate skin texture.' },
+            { src: 'turtle-8.jpg', cap: 'Front view of finished anamtronic with painted tongue.' }
+        ]
+    },
+    {
+        title: "Hydrogen Fuel Cell Car",
+        desc: "<span class=modal-label>Timeline:</span> Dec, 2023<br><br><span class=modal-label>Goal:</span> Maximize the speed of a hydrogen fuel cell-powered model vehicle under strict competition constraints, including a fixed power source and limited modification allowances.<br><br><span class=modal-label>Approach &amp; Challenges:</span> With the powertrain essentially locked, performance gains had to come from everything else: vehicle weight, gear ratios, wheel diameter, and mechanical efficiency. Instead of guessing, I developed a structured testing process where I isolated each variable through timed experimental runs, changing one factor at a time to measure its effect. The data from those runs guided each design iteration. For example, testing revealed that gear ratio had a more significant impact on overall performance than weight reduction, which shifted my optimization priority toward drivetrain configuration and the balance between torque and speed. Additionally, ratios that prioritized torque performed much better, as the fuel cell alone didn't supply enough power to move the car. I also tested other factors, such as adding bearings for smoother rotation, which improved performance enough to outweigh the added mass (literally).<br><br>The main challenge with this approach was that changing certain variables, particularly gear ratios, was time-consuming. Over time, I adapted the system by adding motor spacers and mounting components with Velcro and zip ties, allowing for quick ratio swaps and the corresponding changes in mounting height.<br><br><span class=modal-label>Outcome:</span> The final design used a 1:2 gear ratio and was able to travel 30 feet in an average of 8.538 seconds, making it nearly double as fast compared to initial tests. It achieved top performance in the competition, along with receiving the Best Engineered Car Award for its systematic design and optimization process. The key takeaway was the value of data-driven iteration: having a structured testing process meant I could make confident design decisions instead of relying on intuition.",
+        images: [
+            { src: 'car-preview.jpg', cap: 'Final car design, with best performing gear ratio and wheel size.' },
+            { src: 'car-1.jpg', cap: 'Initial prototype for car body made from cut foam board.' },
+            { src: 'car-1.jpg', cap: 'Layout of all car components.' },
+            { src: 'car-1.jpg', cap: 'First car design used for testing gear ratios.' }
+        ]
+    },
+    {
+        title: "Mushroom Grow Box",
+        desc: "<span class=modal-label>Timeline:</span> April - June, 2023<br><br><span class=modal-label>Goal:</span> Program and house the electronics for an environmental control system capable of monitoring and regulating temperature and humidity within the narrow ranges required for mushroom cultivation.<br><br><span class=modal-label>Approach &amp; Challenges:</span> The electronics use an Arduino Uno, reading from temperature and humidity sensors, driving control components (fans, heating elements) through a C++ program that continuously adjusts outputs based on sensor feedback. After testing everything on a breadboard and soldering the final connections, I moved on to housing the components, designing a custom 3D-printed enclosure in OnShape. The main challenge was finding the best way to use the limited space available while keeping everything easily accessible.<br><br>To maximize space, the box was designed around the outer housing for the fan and water chamber that controls humidity. The final version uses snap-fit joints for tool-free mounting, internal cable routing channels to keep wiring organized, and a dedicated access port so I can reprogram the Arduino without disassembling anything. These small quality-of-life features made the difference between a prototype I'd use once and a system that's practical to maintain and adjust over time.<br><br><span class=modal-label>Outcome:</span> The system successfully demonstrated automated environmental monitoring and control within a compact, maintainable design. I learned about the importance of integrating simple features early that make things easier to edit and maintain later.",
+        images: [
+            { src: 'grow-preview.jpg', cap: 'Finished grow box assembled.' },
+            { src: 'grow-1.jpg', cap: 'Testing the electronics of the grow box with a prototype circuit.' },
+            { src: 'grow-4.jpg', cap: '3D printed enclosure for housing the Arduino and sensors with access port on the top.' },
+            { src: 'grow-2.jpg', cap: 'Electronics housed in 3D printed enclosure.' }
+        ]
+    },
+    {
+        title: "Obstacle Avoidance Robot",
+        desc: "<span class=modal-label>Timeline:</span> Sept - Oct, 2023<br><br><span class=modal-label>Goal:</span> Build an autonomous robot that can navigate obstacle-filled environments using only real-time sensor feedback, with no remote control or pre-mapped paths.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I designed the chassis in OnShape and 3D printed it, keeping the geometry simple to make sensor and motor mounting straightforward. The robot used an ultrasonic sensor mounted on a servo motor to scan five points across its field of view. It was programmed to move forward in set increments of approximately one foot, taking the five readings to determine which direction had the most open space. If there wasn't enough room in front, the robot would rotate 180 degrees to scan behind it and find a new path. I opted for a two-wheel design to make spinning in place easier, and added rubber to the wheel surfaces to increase grip. The remaining space on top was used for electronics.<br><br>The main challenge was soldering, as this was my first time doing it for a project. My first attempt was messy, but after practicing on some spare components, I was able to clean up my technique and create strong, reliable connections.<br><br><span class=modal-label>Outcome:</span> The completed robot reliably navigated cluttered environments with fully autonomous control. Looking back with what I know now, the step-based movement approach was a bit flawed since it made navigation feel janky. If I were to revisit this, I'd simplify it by having the robot turn continuously while scanning until it found a sufficiently open path.",
+        images: [
+            { src: 'avoid-preview.jpg', cap: 'Finished obstacle avoiding robot.' },
+            { src: 'avoid-1.jpg', cap: '3D printed body of robot.' },
+            { src: 'avoid-2.jpg', cap: 'Improved soldering on robot circuit board.' },
+            { src: 'avoid-3.jpg', cap: 'Overhead look at robot electronics.' }
+        ]
+    },
+    {
+        title: "Robotic Arm",
+        desc: "<span class=modal-label>Timeline:</span> Jan, 2024<br><br><span class=modal-label>Goal:</span> Program and operate a robotic arm to perform a repeatable physical task (activating a heating device to maintain a controlled temperature in this case), demonstrating how precise motion control can enable robotics to interact reliably with real-world systems.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I integrated an Arduino-controlled robotic arm with a simple environmental control system, programming the arm to move through a calibrated sequence of positions to press a control interface connected to the heater. I built supporting structures to stabilize the sensors and hardware during operation, and wrote the control logic in C++ to coordinate multiple servo motors for consistent, repeatable movement.<br><br>The bulk of the work was in calibration. Small errors in motor positioning or timing would compound across the motion sequence, causing the arm to miss its target. I used iterative testing, adjusting positions by small increments, running the sequence, measuring the deviation, and adjusting again, until the arm could reliably hit the control interface across repeated cycles.<br><br><span class=modal-label>Outcome:</span> The final system performed structured physical interactions through motion control and hardware integration. The process reinforced that precision in electromechanical systems isn't something you design once and get right; it's something you converge on through systematic testing and calibration.",
+        images: [
+            { src: 'arm-preview.jpg', cap: 'Assembled arm and heating mechanism.' },
+            { src: 'arm-2.jpg', cap: 'Heating setup for arm using balsa wood sticks and foam.' },
+            { src: 'arm-3.jpg', cap: 'Initial testing and learning how to use the robotic arm.' },
+            { src: 'arm-1.jpg', cap: 'Robot arm arduino.' }
+        ]
+    }
+];
 
-            document.getElementById("projectModal").style.display = "block";
-            document.body.style.overflow = "hidden"; // Stops the background from scrolling
-        }
+function handleProjectClick(index) {
+    const project = projectData[index];
+    if (project) {
+        openModal(project.title, project.desc, project.images);
+    }
+}
 
-        function closeModal() {
-            document.getElementById("projectModal").style.display = "none";
-            document.body.style.overflow = "auto";
-        }
+function openModal(title, desc, images) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDesc").innerHTML = desc;
+    const imgContainer = document.getElementById("modalImages");
+    imgContainer.innerHTML = "";
+    
+    images.forEach(item => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "modal-item";
 
-        // Close when clicking outside the box
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("projectModal")) {
-                closeModal();
-            }
-        }
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.onerror = function() { wrapper.style.display='none'; };
+
+        const cap = document.createElement("p");
+        cap.className = "img-caption";
+        cap.innerText = item.cap;
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(cap);
+        imgContainer.appendChild(wrapper);
+    });
+
+    document.getElementById("projectModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+    document.getElementById("projectModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("projectModal")) {
+        closeModal();
+    }
+}
+                
     </script>
 </body>
 </html>
