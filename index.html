@@ -232,7 +232,17 @@
             <h2 class="section-title">Technical Projects</h2>
             <div class="project-grid">
                 
-                <div class="project-card" onclick="handleProjectClick(0)">
+		 <div class="project-card" onclick="handleProjectClick(0)">
+                    <div class="project-img" style="background-image: url('leg-preview.jpg');"></div>
+                    <div class="project-info">
+                        <h3>Dual-Mode Transtibial Prosthetic</h3>
+                        <p>Dual-mode walking and jogging prosthetic with a rotating, hirth-locked carbon-fiber blade.</p>
+                        <div class="tags"><span>SolidWorks</span> <span>FEA</span> <span>Research</span></div>
+                    </div>
+                </div>
+
+
+                <div class="project-card" onclick="handleProjectClick(1)">
                     <div class="project-img" style="background-image: url('puzzle-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Digital Puzzle Box</h3>
@@ -241,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(1)">
+                <div class="project-card" onclick="handleProjectClick(2)">
                     <div class="project-img" style="background-image: url('robot-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>1lb Combat Robot</h3>
@@ -250,7 +260,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(2)">
+                <div class="project-card" onclick="handleProjectClick(3)">
                     <div class="project-img" style="background-image: url('turtle-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Animatronic Turtle</h3>
@@ -259,7 +269,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(3)">
+                <div class="project-card" onclick="handleProjectClick(4)">
                     <div class="project-img" style="background-image: url('car-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Hydrogen Fuel Cell Car</h3>
@@ -268,7 +278,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(4)">
+                <div class="project-card" onclick="handleProjectClick(5)">
                     <div class="project-img" style="background-image: url('grow-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Mushroom Grow Box</h3>
@@ -277,7 +287,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(5)">
+                <div class="project-card" onclick="handleProjectClick(6)">
                     <div class="project-img" style="background-image: url('avoid-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Obstacle Avoidance Robot</h3>
@@ -286,7 +296,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="handleProjectClick(6)">
+                <div class="project-card" onclick="handleProjectClick(7)">
                     <div class="project-img" style="background-image: url('arm-preview.jpg');"></div>
                     <div class="project-info">
                         <h3>Advanced Mechanisms Robotic Arm</h3>
@@ -334,6 +344,22 @@
     <script>
         // PROJECT DATA SOURCE
         const projectData = [
+	
+
+	{
+        title: "Dual-Mode Transtibial Prosthetic",
+        desc: "<span class=modal-label>Timeline:</span> May, 2026 - Present<br><br><span class=modal-label>Goal:</span> Design a single transtibial prosthetic, roughly 15 inches tall, that integrates both a walking foot and a dedicated running blade in one system. Instead of swapping prostheses to change activity, the user rotates the lower assembly and locks it in place to switch between a stable walking mode and a spring-like jogging mode.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I started on the research side, reviewing peer-reviewed biomechanics literature on running-specific prostheses to understand how blade geometry, stiffness, and height influence gait, ground reaction forces, and side-to-side asymmetry. Most published blades are tuned for sprinting, so I used the research to inform a blade profile aimed at jogging speeds instead.<br><br>From there I sketched the full system: the socket, a set of frame supports, a rotation mechanism for switching modes, and a removable walking foot retained by a pin detent. The hardest design decision was how to lock the two modes repeatably and safely. I chose a Hirth-style coupling, where two face-toothed rings are pushed together by a spring. The teeth disengage axially to allow rotation, then re-seat into the same indexed position every time, giving precise, high-load locking that does not slip under body weight.<br><br>I modeled the blade in SolidWorks from a fully dimensioned sketch and ran static FEA using Hexcel AS4C carbon fiber and its 4 GPa yield strength. I tested loading at both the forefoot and the top mounting platform to capture different points in a stride. The analysis showed stress concentrating along the curved segment of the blade, so I added fillets through that transition and confirmed a factor of safety of 3.7.<br><br><span class=modal-label>Outcome:</span> This is an early-stage, in-progress personal project. So far the overall architecture, the mode-switching concept, and a structurally validated blade geometry are defined. Next steps are detailing the rotation and locking hardware, designing the socket interface, and moving toward a physical prototype.",
+        images: [
+            { src: 'leg-preview.jpg', cap: 'Current running blade shape to test necessary forces.' },
+            { src: 'leg-FEA-toe.jpg', cap: 'FEA stress study on toe portion of leg at 4500 N of force.' },
+            { src: 'leg-FEA-top.jpg', cap: 'FEA stress study on top portion of leg at 4500 N of force.' },
+            { src: 'leg-sketch.jpg', cap: '2D SolidWorks sketch for blade profile.' },
+            { src: 'leg-drawing-front.jpg', cap: 'Front facing sketch showing preliminary plan for prosthetic.' },
+	    { src: 'leg-drawing-side.jpg', cap: 'Side facing sketch showing preliminary plan for prosthetic.' },
+	    { src: 'leg-drawing-hirth.jpg', cap: 'Sketch showing preliminary plan for hirth rotating mechanism.' }
+        ]
+    },
+
             {
 		title: "Digital Puzzle Box",
         desc: "<span class=modal-label>Timeline:</span> Sept - Oct, 2025<br><br><span class=modal-label>Goal:</span> To improve upon my skills with microcontrollers, I challenged myself with an interactive, multi-stage puzzle box combining embedded electronics with physical interaction.<br><br><span class=modal-label>Approach &amp; Challenges:</span> I built the system around an ESP32 and an LCD since it was what I had on hand, along with ultrasonic distance sensors, tactile buttons, servo-driven mechanisms, and a joystick, which I had never worked with before. I wrote the embedded software in C++ using the Arduino IDE, structured around a counter that tracked progress through each completed stage.<br><br>I wanted each puzzle to make full use of its assigned sensor and for difficulty to build as the user progressed. For example, the distance sensor stage required moving the box a specific distance from the wall to proceed, while the final stage required entering the Konami code on the joystick, with the last inputs (B, A, Start) mapped to buttons on earlier faces of the box.<br><br>The biggest challenge was working with cardboard: parts had trouble staying in place, and cuts weren\&apos;t precise enough for reliable sensor mounting. The complexity of the electronics also caused frequent glitches early on, most of which I was able to find and fix when optimizing the code.<br><br><span class=modal-label>Outcome:</span> Went from concept to a functional prototype in under two weeks. Friends and family who tested it found some stages overly complicated, which taught me that if I were to revisit this, I\&apos;d rely less on outside knowledge, lean more into the sensors themselves, and reduce the number of steps to solve each puzzle. The project strengthened my embedded systems skills and reinforced the importance of considering user experience throughout the design process and keeping code simple and  well organized.",
